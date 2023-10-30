@@ -1,0 +1,93 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/KinematicBody2D.gd" type="Script" id=3]
+[ext_resource path="res://Tilesets/solid_tileset.tres" type="TileSet" id=4]
+[ext_resource path="res://Sprites/blue_background.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/near_background.png" type="Texture" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 2141, 96.5 )
+
+[node name="Level" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 250, 489 )
+script = ExtResource( 3 )
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+current = true
+limit_left = -200
+limit_bottom = 700
+limit_smoothed = true
+drag_margin_h_enabled = true
+smoothing_enabled = true
+smoothing_speed = 7.0
+drag_margin_left = 0.25
+drag_margin_right = 0.25
+editor_draw_limits = true
+
+[node name="TileMap- Solids" type="TileMap" parent="."]
+tile_set = ExtResource( 4 )
+show_collision = true
+format = 1
+tile_data = PoolIntArray( -262148, 1, 0, -262147, 1, 0, -196612, 1, 0, -196611, 1, 0, -131076, 1, 0, -131075, 1, 0, -65540, 1, 0, -65539, 1, 0, -4, 1, 0, -3, 1, 0, 65532, 1, 0, 65533, 1, 0, 57, 5, 0, 58, 6, 0, 131068, 1, 0, 131069, 1, 0, 65554, 5, 0, 65555, 11, 0, 65556, 6, 0, 196604, 1, 0, 196605, 1, 0, 131096, 5, 0, 131097, 6, 0, 131114, 5, 0, 131115, 6, 0, 131125, 5, 0, 131126, 6, 0, 262140, 1, 0, 262141, 1, 0, 196646, 5, 0, 196647, 6, 0, 327676, 1, 0, 327677, 1, 0, 262159, 5, 0, 262160, 6, 0, 262190, 5, 0, 262191, 11, 0, 262192, 11, 0, 262193, 11, 0, 262194, 6, 0, 393212, 1, 0, 393213, 1, 0, 327690, 5, 0, 327691, 11, 0, 327692, 6, 0, 327708, 5, 0, 327709, 6, 0, 458748, 1, 0, 458749, 1, 0, 393251, 5, 0, 393252, 6, 0, 524284, 1, 0, 524285, 1, 0, 589820, 1, 0, 589821, 1, 0, 589822, 11, 0, 589823, 11, 0, 524288, 11, 0, 524289, 11, 0, 524290, 11, 0, 524291, 11, 0, 524292, 11, 0, 524293, 11, 0, 524294, 11, 0, 524295, 11, 0, 524296, 11, 0, 524297, 11, 0, 524298, 11, 0, 524299, 11, 0, 524300, 6, 0, 524319, 5, 0, 524320, 6, 0, 655356, 1, 0, 655357, 1, 0, 655358, 1, 0, 655359, 1, 0, 589824, 1, 0, 589825, 1, 0, 589826, 1, 0, 589827, 1, 0, 589828, 1, 0, 589829, 1, 0, 589830, 1, 0, 589831, 1, 0, 589832, 1, 0, 589833, 1, 0, 589834, 1, 0, 589835, 12, 0, 720892, 1, 0, 720893, 1, 0, 720894, 1, 0, 720895, 1, 0, 655360, 1, 0, 655361, 1, 0, 655362, 1, 0, 655363, 1, 0, 655364, 1, 0, 655365, 1, 0, 655366, 1, 0, 655367, 1, 0, 655368, 1, 0, 655369, 1, 0, 655370, 12, 0, 786428, 1, 0, 786429, 1, 0, 786430, 1, 0, 786431, 1, 0, 720896, 1, 0, 720897, 1, 0, 720898, 1, 0, 720899, 1, 0, 720900, 1, 0, 720901, 1, 0, 720902, 1, 0, 720903, 1, 0, 720904, 1, 0, 720905, 12, 0, 851964, 1, 0, 851965, 1, 0, 851966, 1, 0, 851967, 1, 0, 786432, 1, 0, 786433, 1, 0, 786434, 1, 0, 786435, 1, 0, 786436, 1, 0, 786437, 1, 0, 786438, 1, 0, 786439, 1, 0, 786440, 12, 0 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Sky" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 1280, 960 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/Sky"]
+position = Vector2( -243, -93 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
+centered = false
+
+[node name="Sky_Waves_Back" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.3, 0.3 )
+motion_mirroring = Vector2( 1536, 1152 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/Sky_Waves_Back"]
+modulate = Color( 0.176471, 0.266667, 0.141176, 1 )
+position = Vector2( -100, -100 )
+scale = Vector2( 2.4, 2.4 )
+texture = ExtResource( 6 )
+centered = false
+
+[node name="Sky_Waves_Middle" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.5, 0.5 )
+motion_mirroring = Vector2( 1440, 1080 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/Sky_Waves_Middle"]
+modulate = Color( 0.0784314, 0.0941176, 0.188235, 1 )
+position = Vector2( -100, -100 )
+scale = Vector2( 2.25, 2.25 )
+texture = ExtResource( 6 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sky_Waves_Front" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.7, 0.7 )
+motion_mirroring = Vector2( 1120, 840 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/Sky_Waves_Front"]
+modulate = Color( 0.54902, 0.313726, 0.313726, 1 )
+position = Vector2( -100, -100 )
+scale = Vector2( 1.75, 1.75 )
+texture = ExtResource( 6 )
+centered = false
+
+[node name="Bounds" type="Area2D" parent="."]
+position = Vector2( 391, 1041 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="Bounds"]
+position = Vector2( 2097, 12.5 )
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="Bounds" to="Player" method="_on_Area2D_body_entered"]

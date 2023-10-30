@@ -1,0 +1,22 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=2]
+
+[ext_resource path="res://Sprites/BluePlayer_Idle.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/BluePlayer_Jump.png" type="Texture" id=2]
+
+[resource]
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "idle",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "Air",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "Walk",
+"speed": 5.0
+} ]
